@@ -45,7 +45,7 @@ Edit tailwind.config.js like this:
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -89,7 +89,7 @@ const firebaseConfig = {
 };
 ```
 ✅ Step 6: Create firebase.js
-In your root folder(not the app folder, but the folder your app folders in), create firebase.js:
+In your root folder(not the app folder, but the folder your app folders in), create a new file called "firebase.js":
 
 ```js
 // Import required Firebase modules
@@ -114,7 +114,8 @@ export const auth = getAuth(app);
 ```
 
 ✅ Step 7: Create Registration Page
-Create a new file: pages/register.js
+First create a new folder called "register" within your app folder.
+Then create a new file called "page.js" within this folder: app/register/page.js
 
 ```jsx
 import { useState } from "react";
@@ -180,7 +181,8 @@ export default function Register() {
 }
 ```
 ✅ Step 8: Create Login Page
-Create a new file: pages/login.js
+First create a new folder called "login" within your app folder.
+Then create a new file called "page.js" within this folder: app/login/page.js
 
 ```jsx
 import { useState } from "react";
@@ -245,8 +247,8 @@ export default function Login() {
 }
 ```
 ✅ Step 9: Create Protected Page
-Create pages/protected.js:
-
+First create a new folder called "protected" within your app folder.
+Then create a new file called "page.js" within this folder: app/protected/page.js
 ```jsx
 import { useEffect, useState } from "react";
 import { auth } from "../firebase";
