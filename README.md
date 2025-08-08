@@ -9,15 +9,32 @@ This walkthrough will help you:
 
 ---
 
-## ✅ Step 1: Create a GitHub Repository
+## Step 0: Fork the Starter Repository
 
-1. Go to [https://github.com](https://github.com)
-2. Create a new repository named:
-```bash
-yourname-AstersTech-Project
-```
+1. You will receive a link to the starter repo, for example:  
+   `https://github.com/AstersTech/AstersTech-Week2-Demo-HW1`
 
-3. Open it using **GitHub Codespaces** (green “Code” button → “Open with Codespaces”).
+2. Open the link in your browser.
+
+3. Click the **Fork** button at the top-right corner of the page.  
+   This creates a copy of the repository in your own GitHub account.
+
+4. Your forked repo URL will look like:  
+   `https://github.com/your-username/wAstersTech-Week2-Demo-HW1`
+
+---
+
+## Step 1: Open the Forked Repo in GitHub Codespaces
+
+1. Navigate to your forked repo page on GitHub.
+
+2. Click the green **Code** button.
+
+3. Select the **Codespaces** tab.
+
+4. Click **Create codespace on main**.
+
+5. Wait a minute or two for Codespaces to launch your cloud IDE.
 
 ---
 
