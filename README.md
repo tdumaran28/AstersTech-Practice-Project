@@ -44,6 +44,9 @@ Inside Codespaces, run these:
 
 ```bash
 npx create-next-app@latest yourname --use-npm
+```
+Next,
+```bash
 cd yourname
 ```
 Then start your project:
