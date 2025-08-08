@@ -54,16 +54,13 @@ Then start your project:
 ```bash
 npm run dev
 ```
-## ✅ Step 3: Install Firebase SDK
-Run:
-```bash
-npm install firebase
-```
-## ✅ Step 4: Set Up Firebase
+## ✅ Step 3: Set Up Firebase
 
 Go to https://console.firebase.google.com
 
 Click Add Project, name it something like AstersAuthApp
+
+Then click through all the buttons (filling in what's needed) and create your project.
 
 Click Web App (</>), register it, and get your Firebase config:
 
@@ -78,47 +75,27 @@ const firebaseConfig = {
   appId: "APP_ID"
 };
 ```
-## ✅ Step 5: Create firebase.js
-In your root folder (NOT inside your app folder, but the folder that contains your app folder), create a new file called firebase.js:
+Run:
+```bash
+npm install firebase
+```
 
+## ✅ Step 4: Create firebase.js
+In your root folder (NOT inside your app folder, but the folder that contains your app folder), create a new file called firebase.js
+
+Next, copy the code from the firebase website and paste it into this file
+
+Next add these two lines of code, one at the absolute top of your file (inside your code) and one at the bottom
+
+Top:
 ```js
-// -------------------------
-// This file connects your app to Firebase
-// Think of Firebase like the "brain" that stores accounts, data, etc.
-// -------------------------
-
-// Import the function that lets us "start" Firebase in our app
-import { initializeApp } from "firebase/app";
-
-// Import the function that lets us use Firebase's "Authentication" service
 import { getAuth } from "firebase/auth";
-
-// -------------------------
-// This is your Firebase project's unique info (like a key to your personal safe)
-// You will get this info from your Firebase console when you create a project
-// Replace the placeholder text with your actual Firebase config details
-// -------------------------
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",                  // Secret key for your project
-  authDomain: "yourproject.firebaseapp.com", // Website domain for auth
-  projectId: "yourproject",                  // Your project's ID
-  storageBucket: "yourproject.appspot.com",  // Storage space for files
-  messagingSenderId: "SENDER_ID",            // ID for sending messages
-  appId: "APP_ID"                            // App's unique ID
-};
-
-// -------------------------
-// Start (initialize) Firebase using the info above
-// -------------------------
-const app = initializeApp(firebaseConfig);
-
-// -------------------------
-// Prepare and "export" the Authentication service
-// Exporting means we can use `auth` in other files
-// -------------------------
+```
+Bottom:
+```js
 export const auth = getAuth(app);
 ```
-## ✅ Step 6: Create Registration Page
+## ✅ Step 5: Create Registration Page
 Make a folder called register inside your app folder.
 Then inside it, create page.js:
 
@@ -206,7 +183,7 @@ export default function Register() {
   );
 }
 ```
-## ✅ Step 7: Create Login Page
+## ✅ Step 6: Create Login Page
 Make a folder called login inside your app folder.
 Then inside it, create page.js:
 
@@ -284,7 +261,7 @@ export default function Login() {
   );
 }
 ```
-## ✅ Step 8: Create Protected Page
+## ✅ Step 7: Create Protected Page
 Make a folder called protected inside your app folder.
 Then inside it, create page.js:
 ```jsx
@@ -332,7 +309,7 @@ export default function Protected() {
   );
 }
 ```
-## ✅ Step 9: Run Your App
+## ✅ Step 8: Run Your App
 Start your development server:
 
 ```bash
