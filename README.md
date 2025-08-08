@@ -54,42 +54,12 @@ Then start your project:
 ```bash
 npm run dev
 ```
-## ✅ Step 3: Install Tailwind CSS
-Run:
-```bash
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-```
-Edit tailwind.config.js like this:
-```js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-```
-
-Update your styles/globals.css:
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-✅ You can now use Tailwind in your pages.
-
-## ✅ Step 4: Install Firebase SDK
+## ✅ Step 3: Install Firebase SDK
 Run:
 ```bash
 npm install firebase
 ```
-## ✅ Step 5: Set Up Firebase
+## ✅ Step 4: Set Up Firebase
 
 Go to https://console.firebase.google.com
 
@@ -108,7 +78,7 @@ const firebaseConfig = {
   appId: "APP_ID"
 };
 ```
-## ✅ Step 6: Create firebase.js
+## ✅ Step 5: Create firebase.js
 In your root folder (NOT inside your app folder, but the folder that contains your app folder), create a new file called firebase.js:
 
 ```js
@@ -148,7 +118,7 @@ const app = initializeApp(firebaseConfig);
 // -------------------------
 export const auth = getAuth(app);
 ```
-## ✅ Step 7: Create Registration Page
+## ✅ Step 6: Create Registration Page
 Make a folder called register inside your app folder.
 Then inside it, create page.js:
 
@@ -236,7 +206,7 @@ export default function Register() {
   );
 }
 ```
-## ✅ Step 8: Create Login Page
+## ✅ Step 7: Create Login Page
 Make a folder called login inside your app folder.
 Then inside it, create page.js:
 
@@ -314,7 +284,7 @@ export default function Login() {
   );
 }
 ```
-## ✅ Step 9: Create Protected Page
+## ✅ Step 8: Create Protected Page
 Make a folder called protected inside your app folder.
 Then inside it, create page.js:
 ```jsx
@@ -362,7 +332,7 @@ export default function Protected() {
   );
 }
 ```
-## ✅ Step 10: Run Your App
+## ✅ Step 9: Run Your App
 Start your development server:
 
 ```bash
