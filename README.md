@@ -1,4 +1,4 @@
-# 🌟 AstersTech Week 2 - Homework 1: Firebase Auth + Protected Pages
+# 🌟 AstersTech Week 2 - Starting your projects!
 
 This walkthrough will help you:
 
