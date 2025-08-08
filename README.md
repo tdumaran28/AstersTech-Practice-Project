@@ -9,7 +9,7 @@ This walkthrough will help you:
 
 ---
 
-## Step 0: Fork the Starter Repository
+## ✅ Step 0: Fork the Starter Repository
 
 1. You will receive a link to the starter repo, for example:  
    `https://github.com/AstersTech/AstersTech-Week2-Demo-HW1`
@@ -24,7 +24,7 @@ This walkthrough will help you:
 
 ---
 
-## Step 1: Open the Forked Repo in GitHub Codespaces
+## ✅ Step 1: Open the Forked Repo in GitHub Codespaces
 
 1. Navigate to your forked repo page on GitHub.
 
