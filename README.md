@@ -43,11 +43,11 @@ This walkthrough will help you:
 Inside Codespaces, run these:
 
 ```bash
-npx create-next-app@latest yourname --use-npm
+npx create-next-app@latest project --use-npm
 ```
 Next,
 ```bash
-cd yourname
+cd project
 ```
 Then start your project:
 
