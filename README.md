@@ -175,7 +175,7 @@ export default function Home(){
 ```
 ## ✅ Step 6: Create Registration Page
 Make a folder called 'register' inside your app folder.
-Then inside it, create page.jsx:
+Then inside it, create page.tsx:
 
 ```jsx
 // -------------------------
@@ -265,7 +265,7 @@ export default function Register() {
 ```
 ## ✅ Step 7: Create Login Page
 Again, Make a folder called 'login' inside your app folder.
-Then inside it, create page.jsx:
+Then inside it, create page.tsx:
 
 ```jsx
 // -------------------------
@@ -345,7 +345,7 @@ export default function Login() {
 ```
 ## ✅ Step 8: Create Protected Page
 Make a folder called 'protected' inside your app folder.
-Then inside it, create page.jsx:
+Then inside it, create page.tsx:
 ```jsx
 // -------------------------
 // This is a page only logged-in users can see
