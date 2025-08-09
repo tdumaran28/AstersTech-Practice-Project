@@ -50,7 +50,7 @@ Next,
 cd project
 ```
 ## ✅ Step 3: Set Up Firebase
-Go to Firebase Console
+Go to Firebase Console: https://console.firebase.google.com
 
 Click "Add Project", and give it a name like AstersAuthApp.
 
