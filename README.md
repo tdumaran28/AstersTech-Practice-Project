@@ -95,9 +95,44 @@ Bottom:
 ```js
 export const auth = getAuth(app);
 ```
-## ✅ Step 5: Create Registration Page
+## ✅ Step 5: Update Home Page
+Click on the folder called app on the left-hand side of your screen. Next, without clicking/opening any other folders click on the file called "page.tsx"
+
+Next, within that page delete the code from lines 5 all the way to 101. This should leave you with a function and an empty return.
+
+Now, copy the code below and past it in on line 5. This code should be within the return statement.
+
+```tsx
+import Image from "next/image";
+import Link from "next/link";
+
+export default function Home() {
+  return (
+    <div style={{ padding: "2rem" }}>
+      <h1>Welcome to the App</h1>
+
+      <nav style={{ marginTop: "1rem" }}>
+        <ul style={{ listStyle: "none", padding: 0 }}>
+          <li>
+            <Link href="/register">Go to Registration</Link>
+          </li>
+          <li>
+            <Link href="/register-protected">
+              Go to Protected Registration
+            </Link>
+          </li>
+          <li>
+            <Link href="/login">Go to Login</Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  );
+}
+```
+## ✅ Step 6: Create Registration Page
 Make a folder called register inside your app folder.
-Then inside it, create page.js:
+Then inside it, create page.tsx:
 
 ```jsx
 // -------------------------
@@ -105,16 +140,18 @@ Then inside it, create page.js:
 // -------------------------
 
 // Import React's useState function to store and update form input values
+'use client'
+
 import { useState } from "react";
 
 // Import Firebase's "create account" function
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 // Import the `auth` service we made in firebase.js
-import { auth } from "../firebase";
+import { auth } from "@/firebase";
 
 // Import the tool that lets us change pages in Next.js
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
   const router = useRouter(); // lets us redirect to other pages
@@ -183,19 +220,20 @@ export default function Register() {
   );
 }
 ```
-## ✅ Step 6: Create Login Page
+## ✅ Step 7: Create Login Page
 Make a folder called login inside your app folder.
-Then inside it, create page.js:
+Then inside it, create page.tsx:
 
 ```jsx
 // -------------------------
 // This page lets existing users log into their account
 // -------------------------
+'use client'
 
 import { useState } from "react"; // for storing what the user types
 import { signInWithEmailAndPassword } from "firebase/auth"; // Firebase login function
-import { auth } from "../firebase"; // our Firebase Auth instance
-import { useRouter } from "next/router"; // for redirecting
+import { auth } from "@/firebase"; // our Firebase Auth instance
+import { useRouter } from "next/navigation"; // for redirecting
 
 export default function Login() {
   const router = useRouter();
@@ -261,7 +299,7 @@ export default function Login() {
   );
 }
 ```
-## ✅ Step 7: Create Protected Page
+## ✅ Step 8: Create Protected Page
 Make a folder called protected inside your app folder.
 Then inside it, create page.js:
 ```jsx
@@ -269,11 +307,12 @@ Then inside it, create page.js:
 // This is a page only logged-in users can see
 // If you are not logged in, you will be sent to the Login page
 // -------------------------
+'use client'
 
 import { useEffect, useState } from "react"; // for tracking state and side effects
-import { auth } from "../firebase"; // our Firebase Auth instance
+import { auth } from "@/firebase"; // our Firebase Auth instance
 import { onAuthStateChanged } from "firebase/auth"; // detects if user logs in/out
-import { useRouter } from "next/router"; // for redirecting
+import { useRouter } from "next/navigation"; // for redirecting
 
 export default function Protected() {
   const router = useRouter();
@@ -309,7 +348,7 @@ export default function Protected() {
   );
 }
 ```
-## ✅ Step 8: Run Your App
+## ✅ Step 9: Run Your App
 Start your development server:
 
 ```bash
