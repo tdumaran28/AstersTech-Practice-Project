@@ -20,7 +20,7 @@ This walkthrough will help you:
    This creates a copy of the repository in your own GitHub account.
 
 4. Your forked repo URL will look like:  
-   `https://github.com/your-username/wAstersTech-Week2-Demo-HW1`
+   `https://github.com/your-username/AstersTech-Week2-Demo-HW1`
 
 ---
 
