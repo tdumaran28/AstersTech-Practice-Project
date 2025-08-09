@@ -135,29 +135,37 @@ Click on the folder called app on the left-hand side of your screen. Next, witho
 Next, within that page delete all the code. Finally, paste the code below into your file (it should be the only thing in it)
 
 ```tsx
+import { FormEvent, ChangeEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home(){
+export default function Home(): JSX.Element {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
-      <form onSubmit={handleRegister} className="bg-gray-800 p-6 rounded-lg shadow-lg w-80">
+      <form
+        onSubmit={(handleRegister as (e: FormEvent<HTMLFormElement>) => void)}
+        className="bg-gray-800 p-6 rounded-lg shadow-lg w-80"
+      >
         <h1 className="text-xl font-bold mb-4 text-center">Register</h1>
-        
+
         <input
           type="email"
           placeholder="Email"
           className="w-full p-2 mb-3 border border-gray-600 rounded bg-gray-700 text-white placeholder-gray-400"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={email as string}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setEmail(e.target.value)
+          }
         />
 
         <input
           type="password"
           placeholder="Password"
           className="w-full p-2 mb-3 border border-gray-600 rounded bg-gray-700 text-white placeholder-gray-400"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={password as string}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setPassword(e.target.value)
+          }
         />
 
         <button
@@ -195,17 +203,18 @@ import { auth } from "@/firebase";
 
 // Import the tool that lets us change pages in Next.js
 import { useRouter } from "next/navigation";
+import { FormEvent, ChangeEvent } from "react";
 
-export default function Register() {
+export default function Register(): JSX.Element {
   const router = useRouter(); // lets us redirect to other pages
 
   // Create variables to store what the user types in the form
-  const [email, setEmail] = useState("");       // user's email
-  const [password, setPassword] = useState(""); // user's password
-  const [message, setMessage] = useState("");   // message for success or errors
+  const [email, setEmail] = useState<string>("");       // user's email
+  const [password, setPassword] = useState<string>(""); // user's password
+  const [message, setMessage] = useState<string>("");   // message for success or errors
 
   // This runs when the user clicks "Sign Up"
-  const handleRegister = async (e) => {
+  const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // stop page from refreshing
     try {
       // Create the account in Firebase
@@ -216,9 +225,13 @@ export default function Register() {
 
       // Redirect user to the protected page after signing up
       router.push("/protected");
-    } catch (err) {
+    } catch (err: unknown) {
       // If there's an error, show the error message
-      setMessage("❌ " + err.message);
+      if (err instanceof Error) {
+        setMessage("❌ " + err.message);
+      } else {
+        setMessage("❌ An unknown error occurred.");
+      }
     }
   };
 
@@ -236,7 +249,7 @@ export default function Register() {
           placeholder="Email"
           className="w-full p-2 mb-3 border rounded"
           value={email} // current email value
-          onChange={(e) => setEmail(e.target.value)} // update email
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} // update email
         />
 
         {/* Password input field */}
@@ -245,7 +258,7 @@ export default function Register() {
           placeholder="Password"
           className="w-full p-2 mb-3 border rounded"
           value={password} // current password value
-          onChange={(e) => setPassword(e.target.value)} // update password
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} // update password
         />
 
         {/* Sign Up button */}
@@ -273,22 +286,22 @@ Then inside it, create page.tsx:
 // -------------------------
 'use client'
 
-import { useState } from "react"; // for storing what the user types
+import { useState, FormEvent, ChangeEvent } from "react"; // for storing what the user types
 import { signInWithEmailAndPassword } from "firebase/auth"; // Firebase login function
 import { auth } from "@/firebase"; // our Firebase Auth instance
 import { useRouter } from "next/navigation"; // for redirecting
 import Link from "next/link";
 
-export default function Login() {
+export default function Login(): JSX.Element {
   const router = useRouter();
 
   // Store form input
-  const [email, setEmail] = useState("");       
-  const [password, setPassword] = useState(""); 
-  const [message, setMessage] = useState("");   
+  const [email, setEmail] = useState<string>("");       
+  const [password, setPassword] = useState<string>(""); 
+  const [message, setMessage] = useState<string>("");   
 
   // Runs when user clicks "Login"
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // stop refresh
     try {
       // Try to log the user in
@@ -299,14 +312,18 @@ export default function Login() {
 
       // Redirect to protected page
       router.push("/protected");
-    } catch (err) {
+    } catch (err: unknown) {
       // Show error if login fails
-      setMessage("❌ " + err.message);
+      if (err instanceof Error) {
+        setMessage("❌ " + err.message);
+      } else {
+        setMessage("❌ An unknown error occurred.");
+      }
     }
   };
 
   return (
-        <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
+    <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
       <form onSubmit={handleLogin} className="bg-gray-800 p-6 rounded-lg shadow-lg w-80">
         <h1 className="text-xl font-bold mb-4 text-center">Login</h1>
 
@@ -315,7 +332,7 @@ export default function Login() {
           placeholder="Email"
           className="w-full p-2 mb-3 border border-gray-600 rounded bg-gray-700 text-white placeholder-gray-400"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
         />
 
         <input
@@ -323,7 +340,7 @@ export default function Login() {
           placeholder="Password"
           className="w-full p-2 mb-3 border border-gray-600 rounded bg-gray-700 text-white placeholder-gray-400"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
         />
 
         <button
@@ -355,14 +372,14 @@ Then inside it, create page.tsx:
 
 import { useEffect, useState } from "react"; // for tracking state and side effects
 import { auth } from "@/firebase"; // our Firebase Auth instance
-import { onAuthStateChanged } from "firebase/auth"; // detects if user logs in/out
+import { onAuthStateChanged, User } from "firebase/auth"; // detects if user logs in/out
 import { useRouter } from "next/navigation"; // for redirecting
 
-export default function Protected() {
+export default function Protected(): JSX.Element {
   const router = useRouter();
 
   // Store logged-in user info
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
 
   // Runs when page loads
   useEffect(() => {
@@ -379,7 +396,7 @@ export default function Protected() {
 
     // Cleanup listener when leaving the page
     return () => unsubscribe();
-  }, []);
+  }, [router]);
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
