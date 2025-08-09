@@ -280,6 +280,7 @@ import { useState } from "react"; // for storing what the user types
 import { signInWithEmailAndPassword } from "firebase/auth"; // Firebase login function
 import { auth } from "@/firebase"; // our Firebase Auth instance
 import { useRouter } from "next/navigation"; // for redirecting
+import Link from "next/link";
 
 export default function Login() {
   const router = useRouter();
@@ -337,6 +338,11 @@ export default function Login() {
         >
           Login
         </button>
+<Link
+          href="/register"
+        >
+          Go to Registration
+        </Link>
 
         {/* Show message */}
         {message && <p className="mt-3 text-center">{message}</p>}
