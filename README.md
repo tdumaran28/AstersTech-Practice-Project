@@ -55,17 +55,20 @@ Then start your project:
 npm run dev
 ```
 ## ✅ Step 3: Set Up Firebase
+Go to Firebase Console
 
-Go to https://console.firebase.google.com
+Click "Add Project", and give it a name like AstersAuthApp.
 
-Click Add Project, name it something like AstersAuthApp
+Go through the setup steps (click Next, and choose defaults unless you know otherwise).
 
-Then click through all the buttons (filling in what's needed) and create your project.
+Once your project is created, click the Web App icon (looks like </>).
 
-Click Web App (</>), register it, and get your Firebase config:
+Register your app (give it a nickname, no hosting needed right now).
+
+After you register, Firebase will show you a config object that looks like this:
 
 ```js
-// Example only – yours could be different
+// Example only – your values will be different!
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "yourproject.firebaseapp.com",
@@ -75,64 +78,107 @@ const firebaseConfig = {
   appId: "APP_ID"
 };
 ```
-Run:
+⚠ Don’t close this page yet — you’ll need to copy this exact object into your project.
+
+Install Firebase in your project:
+
 ```bash
 npm install firebase
 ```
-
 ## ✅ Step 4: Create firebase.js
-In your root folder (NOT inside your app folder, but the folder that contains your app folder), create a new file called firebase.js
+In your project root folder (the same place as your package.json), create a file called:
+```
+firebase.js
+```
+In that file, start by importing Firebase’s initialization functions:
 
-Next, copy the code from the firebase website and paste it into this file
-
-Next add these two lines of code, one at the absolute top of your file (inside your code) and one at the bottom
-
-Top:
 ```js
+import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 ```
-Bottom:
+Paste your firebaseConfig object from Firebase right here (replace the placeholder values with yours):
+
 ```js
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "yourproject.firebaseapp.com",
+  projectId: "yourproject",
+  storageBucket: "yourproject.appspot.com",
+  messagingSenderId: "SENDER_ID",
+  appId: "APP_ID"
+};
+```
+Initialize Firebase and export auth so you can use it anywhere in your app:
+
+```js
+const app = initializeApp(firebaseConfig);
+
+export const auth = getAuth(app);
+```
+✅ Now you have a firebase.js file that looks like this:
+
+```js
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "yourproject.firebaseapp.com",
+  projectId: "yourproject",
+  storageBucket: "yourproject.appspot.com",
+  messagingSenderId: "SENDER_ID",
+  appId: "APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+
 export const auth = getAuth(app);
 ```
 ## ✅ Step 5: Update Home Page
 Click on the folder called app on the left-hand side of your screen. Next, without clicking/opening any other folders click on the file called "page.tsx"
 
-Next, within that page delete the code from lines 5 all the way to 101. This should leave you with a function and an empty return.
-
-Now, copy the code below and past it in on line 5. This code should be within the return statement.
+Next, within that page delete all the code. Finally, paste the code below into your file (it should be the only thing in it)
 
 ```tsx
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default function Home():{
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Welcome to the App</h1>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
+      <h1 className="text-3xl font-bold text-gray-800 mb-8">
+        Welcome to the App
+      </h1>
 
-      <nav style={{ marginTop: "1rem" }}>
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          <li>
-            <Link href="/register">Go to Registration</Link>
-          </li>
-          <li>
-            <Link href="/register-protected">
-              Go to Protected Registration
-            </Link>
-          </li>
-          <li>
-            <Link href="/login">Go to Login</Link>
-          </li>
-        </ul>
+      <nav className="space-y-4">
+        <Link
+          href="/register"
+          className="block px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+        >
+          Go to Registration
+        </Link>
+
+        <Link
+          href="/protected"
+          className="block px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+        >
+          Go to Protected Page
+        </Link>
+
+        <Link
+          href="/login"
+          className="block px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition"
+        >
+          Go to Login
+        </Link>
       </nav>
     </div>
   );
 }
 ```
 ## ✅ Step 6: Create Registration Page
-Make a folder called register inside your app folder.
-Then inside it, create page.tsx:
+Make a folder called 'register' inside your app folder.
+Then inside it, create page.jsx:
 
 ```jsx
 // -------------------------
@@ -221,8 +267,8 @@ export default function Register() {
 }
 ```
 ## ✅ Step 7: Create Login Page
-Make a folder called login inside your app folder.
-Then inside it, create page.tsx:
+Again, Make a folder called 'login' inside your app folder.
+Then inside it, create page.jsx:
 
 ```jsx
 // -------------------------
@@ -300,8 +346,8 @@ export default function Login() {
 }
 ```
 ## ✅ Step 8: Create Protected Page
-Make a folder called protected inside your app folder.
-Then inside it, create page.js:
+Make a folder called 'protected' inside your app folder.
+Then inside it, create page.jsx:
 ```jsx
 // -------------------------
 // This is a page only logged-in users can see
@@ -349,7 +395,12 @@ export default function Protected() {
 }
 ```
 ## ✅ Step 9: Run Your App
-Start your development server:
+Enter your project file in your terminal if you need to:
+```bash
+cd project
+```
+
+Start your development server by running this code into the terminal:
 
 ```bash
 npm run dev
