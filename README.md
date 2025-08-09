@@ -49,11 +49,6 @@ Next,
 ```bash
 cd project
 ```
-Then start your project:
-
-```bash
-npm run dev
-```
 ## ✅ Step 3: Set Up Firebase
 Go to Firebase Console
 
@@ -412,5 +407,40 @@ Try it out:
 Type /register after your url (the one that you open from ports) → and create a new account
 
 Go to /login (replace register with login) → log in
+## ✅ Step 10: Commit Changes in GitHub Codespaces
+Open the terminal in Codespaces.
+
+Stage all your changes
+
+```bash
+git add .
+```
+Commit with a clear message
+```bash
+git commit -m "Completed app setup and tested register/login/protected routes"
+```
+Push to your GitHub repository
+
+```bash
+git push
+```
+Verify on GitHub
+
+Go to your repository in GitHub’s web interface.
+
+Check that your latest commit is listed and your files are updated.
+
+If you haven’t set your Git username/email in Codespaces yet, Git might ask you to run:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+Then repeat the commit and push commands.
+
 
 You’ll be redirected to /protected automatically
+
+## ✅ Step 10: Commit Changes
+
