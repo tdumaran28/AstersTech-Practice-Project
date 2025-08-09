@@ -145,33 +145,35 @@ import Link from "next/link";
 
 export default function Home(){
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">
-        Welcome to the App
-      </h1>
+    <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
+      <form onSubmit={handleRegister} className="bg-gray-800 p-6 rounded-lg shadow-lg w-80">
+        <h1 className="text-xl font-bold mb-4 text-center">Register</h1>
+        
+        <input
+          type="email"
+          placeholder="Email"
+          className="w-full p-2 mb-3 border border-gray-600 rounded bg-gray-700 text-white placeholder-gray-400"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <nav className="space-y-4">
-        <Link
-          href="/register"
-          className="block px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
-        >
-          Go to Registration
-        </Link>
+        <input
+          type="password"
+          placeholder="Password"
+          className="w-full p-2 mb-3 border border-gray-600 rounded bg-gray-700 text-white placeholder-gray-400"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-        <Link
-          href="/protected"
-          className="block px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
         >
-          Go to Protected Page
-        </Link>
+          Sign Up
+        </button>
 
-        <Link
-          href="/login"
-          className="block px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition"
-        >
-          Go to Login
-        </Link>
-      </nav>
+        {message && <p className="mt-3 text-center">{message}</p>}
+      </form>
     </div>
   );
 }
@@ -309,42 +311,37 @@ export default function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <form onSubmit={handleLogin} className="bg-white p-6 rounded-lg shadow-md w-80">
+        <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
+      <form onSubmit={handleLogin} className="bg-gray-800 p-6 rounded-lg shadow-lg w-80">
         <h1 className="text-xl font-bold mb-4 text-center">Login</h1>
 
-        {/* Email input */}
         <input
           type="email"
           placeholder="Email"
-          className="w-full p-2 mb-3 border rounded"
+          className="w-full p-2 mb-3 border border-gray-600 rounded bg-gray-700 text-white placeholder-gray-400"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        {/* Password input */}
         <input
           type="password"
           placeholder="Password"
-          className="w-full p-2 mb-3 border rounded"
+          className="w-full p-2 mb-3 border border-gray-600 rounded bg-gray-700 text-white placeholder-gray-400"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        {/* Login button */}
         <button
           type="submit"
-          className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+          className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
         >
           Login
         </button>
-<Link
-          href="/register"
-        >
+
+        <Link href="/register" className="block mt-4 text-blue-400 hover:underline text-center">
           Go to Registration
         </Link>
 
-        {/* Show message */}
         {message && <p className="mt-3 text-center">{message}</p>}
       </form>
     </div>
@@ -390,10 +387,9 @@ export default function Protected() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen bg-green-50">
-      <div className="bg-white p-6 rounded shadow text-center">
+    <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
+      <div className="bg-gray-800 p-6 rounded shadow-lg text-center">
         <h1 className="text-xl font-bold mb-2">🔒 Protected Page</h1>
-        {/* Show user email if logged in */}
         {user && <p>Welcome, <strong>{user.email}</strong>!</p>}
       </div>
     </div>
