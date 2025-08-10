@@ -40,7 +40,7 @@ This walkthrough will help you:
 
 ## ✅ Step 2: Set Up Next.js in Codespaces
 
-Inside Codespaces, run these:
+Inside Codespace's terminal, run these:
 
 ```bash
 npx create-next-app@latest project --use-npm
